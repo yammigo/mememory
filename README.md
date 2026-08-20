@@ -10,7 +10,31 @@
   <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss" alt="Tailwind">
 </p>
 
----
+[https://www.npmjs.com/package/@mememory/memory-agent](https://www.npmjs.com/package/@mememory/memory-agent)
+
+模型下载：[https://github.com/mememory/memory-agent/releases](https://github.com/mememory/memory-agent/releases)
+
+```bash
+#1.全局安装 
+npm install -g @mememory/memory-agent
+
+#2.安装本地模型 (前往Releases下载模型并解压到当前目录)
+memory-agent model:import
+#3.选择模型目录 (模型解压出来的目录)
+
+#4.启动助手
+# 需要 Node.js ≥ 18
+memory-agent
+# → 自动启动本地服务并打开浏览器 http://127.0.0.1:8080
+# 常用选项
+npx memory-agent --port 3000          # 自定义端口
+npx memory-agent --host 0.0.0.0       # 允许局域网访问
+npx memory-agent --no-open            # 不自动打开浏览器
+npx memory-agent --help               # 查看全部选项
+```
+
+
+
 
 ## 📸 界面预览
 
@@ -339,68 +363,7 @@ AI 助手拥有 7 个 Function Calling 工具：
 
 所有组件、Canvas 图表均支持主题切换，切换后自动持久化到 `localStorage`。CSS 变量驱动，涵盖背景、文字、边框、图表元素等全部颜色。
 
----
-
-## 📁 项目结构
-
-```
-memory-agent/
-├── index.html
-├── package.json
-├── vite.config.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── README.md
-├── public/
-│   ├── favicon.svg
-│   └── icons.svg
-├── model/                          # Embedding 模型文件（本地模式）
-│   ├── wasm/
-│   │   └── ort-wasm-simd-threaded.jsep.*
-│   └── Xenova/all-MiniLM-L6-v2/
-│       ├── onnx/model*.onnx
-│       ├── tokenizer.json
-│       └── ...
-└── src/
-    ├── main.tsx                    # 应用入口
-    ├── types.ts                    # 类型定义（46 个接口/类型）
-    ├── agent/
-    │   ├── agent.ts                # Agent 核心（~530行）
-    │   └── tools.ts                # 工具定义
-    ├── store/
-    │   └── memory-store.ts         # Zustand Store（~700行）
-    ├── utils/
-    │   ├── token-estimator.ts      # Token 估算器
-    │   ├── layers.ts               # 层级配置 + 有效重要度
-    │   ├── analyzer.ts             # 中英文分词器
-    │   ├── chunker.ts              # 长内容切分
-    │   ├── markdown.ts             # Markdown 渲染
-    │   ├── embedding.ts            # Transformers.js 集成
-    │   ├── db.ts                   # IndexedDB 封装
-    │   ├── llm.ts                  # LLM 流式客户端
-    │   ├── search.ts               # 混合检索 + 预算管理
-    │   ├── confidence.ts           # 置信度管理
-    │   ├── consolidate.ts          # 自动巩固
-    │   └── theme.ts                # 主题颜色
-    ├── components/
-    │   ├── App.tsx                 # 主布局
-    │   ├── Header.tsx              # 顶栏
-    │   ├── Sidebar.tsx             # 侧栏
-    │   ├── ChatView.tsx            # 对话界面
-    │   ├── MemoryView.tsx          # 记忆库
-    │   ├── DecayView.tsx           # 衰退分析
-    │   ├── GraphView.tsx           # 记忆图谱
-    │   ├── ContextPanel.tsx        # 上下文/详情面板
-    │   ├── SettingsModal.tsx       # 设置弹窗
-    │   ├── EditModal.tsx           # 编辑弹窗
-    │   ├── ToastContainer.tsx      # Toast 通知
-    │   └── BackgroundCanvas.tsx    # 背景动画
-    └── styles/
-        └── global.css              # 全局样式（~1000行）
-```
-
 ## 🚀 快速开始
-
 ### 方式一：npx 直接运行（无需克隆仓库）
 
 ```bash
@@ -439,136 +402,9 @@ npx memory-agent model:import --path /path/to/model-folder
 node scripts/model-install.mjs --path /path/to/model-folder
 ```
 
-### 方式二：克隆源码开发
 
-```bash
-# 1. 克隆项目
-cd memory-agent
 
-# 2. 安装依赖
-npm install
 
-# 3. 开发模式启动
-npm run dev
-# → 访问 http://localhost:5173
-
-# 4. 生产构建 + 本地启动
-npm run build
-npm start
-```
-
-### 📦 发布到 npm
-
-项目提供了一键发布脚本，支持多种发布模式：
-
-#### 完整发布脚本（推荐）
-```bash
-# 登录 npm 账号
-npm login
-
-# 一键发布当前版本
-npm run release
-
-# 模拟发布（不实际发布，用于测试）
-npm run release:dry
-
-# 发布 beta 版本
-npm run release:beta
-
-# 版本号自动递增发布
-npm run release:patch    # 补丁版本：1.0.0 → 1.0.1
-npm run release:minor    # 次要版本：1.0.0 → 1.1.0
-npm run release:major    # 主要版本：1.0.0 → 2.0.0
-```
-
-#### 简化发布脚本
-```bash
-# 简化版发布（跳过 Git 操作）
-npm run release:simple
-
-# 简化版模拟发布
-npm run release:simple:dry
-```
-
-#### 最小化发布脚本
-```bash
-# 最小化发布（跳过构建步骤，直接发布已有 dist）
-npm run release:minimal
-
-# 最小化模拟发布
-npm run release:minimal:dry
-```
-
-#### 完整发布脚本功能
-完整发布脚本会自动执行以下流程：
-1. 检查 Git 状态（未提交的更改）
-2. 验证 package.json 配置
-3. 运行代码检查（lint、格式化、拼写检查）
-4. 构建项目（TypeScript 编译 + Vite 打包）
-5. 验证构建产物
-6. 更新版本号（如果指定）
-7. Git 提交和标签
-8. 推送到远程仓库
-9. 发布到 npm
-
-#### 使用场景建议
-- **首次发布**：使用 `npm run release`
-- **日常更新**：使用 `npm run release:patch` 或 `npm run release:minor`
-- **测试发布**：使用 `npm run release:dry` 或 `npm run release:beta`
-- **快速发布**：使用 `npm run release:minimal`（需先手动构建）
-- **调试发布**：使用 `npm run release:simple`（跳过 Git 操作）
-
-> 包内通过 `files` 白名单只包含构建产物与 CLI 入口，体积约 5MB（不含 350MB 的 Embedding 模型）。
-
-## 🐳 Docker 部署
-
-### 命令行构建
-
-```bash
-# Nginx 方案（推荐，高性能多进程）
-docker build -f Dockerfile.nginx -t memory-agent .
-
-# PM2 方案（Node.js 多进程集群）
-docker build -f Dockerfile.pm2 -t memory-agent .
-```
-
-### 命令行运行
-
-```bash
-# 启动
-docker run -d -p 3000:3000 --name memory-agent memory-agent
-
-# 查看日志
-docker logs -f memory-agent
-
-# 停止
-docker stop memory-agent
-```
-
-### Docker Compose
-
-```bash
-# 启动（默认使用 Nginx）
-docker compose up -d
-
-# 查看日志
-docker compose logs -f
-
-# 重新构建并启动
-docker compose up -d --build
-
-# 停止
-docker compose down
-```
-
-### 方案对比
-
-| 方案  | Dockerfile         | 端口 | 说明                                    |
-| ----- | ------------------ | ---- | --------------------------------------- |
-| Nginx | `Dockerfile.nginx` | 8080 | 高性能静态文件服务，多 worker 线程      |
-| PM2   | `Dockerfile.pm2`   | 8080 | Node.js 集群模式，自动使用所有 CPU 核心 |
-
-切换方案：编辑 `docker-compose.yml`，注释/取消注释对应配置块。
 
 ### 首次使用配置
 
