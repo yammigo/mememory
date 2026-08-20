@@ -48,7 +48,8 @@ npx memory-agent --help               # 查看全部选项
 
 
 ## 📸 界面预览
-
+![ME MEMORY 界面预览](https://yammigo.github.io/mememory.github.io/light.png)
+![ME MEMORY 界面预览](https://yammigo.github.io/mememory.github.io/dark.png)
 <!-- 截图占位：建议截取以下画面放入 docs/screenshots/ 目录 -->
 
 <p align="center">
