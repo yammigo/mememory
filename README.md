@@ -10,7 +10,9 @@
   <img src="https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss" alt="Tailwind">
 </p>
 
-[https://www.npmjs.com/package/@mememory/memory-agent](https://www.npmjs.com/package/@mememory/memory-agent)
+官网：[https://yammigo.github.io/mememory.github.io/](https://yammigo.github.io/mememory.github.io/)
+
+npm 包：[https://www.npmjs.com/package/@mememory/memory-agent](https://www.npmjs.com/package/@mememory/memory-agent)
 
 模型下载：[https://github.com/yammigo/mememory/releases](https://github.com/yammigo/mememory/releases)
 
