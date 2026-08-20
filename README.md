@@ -1,4 +1,4 @@
-# AI MEMORY — 智能记忆系统
+# ME MEMORY
 
 > 具备 **主动记忆提取**、**Embedding 语义检索**、**置信度动态累积**、**长内容切分**与 **Token 预算智能选择** 的 AI 对话助手。
 
@@ -12,8 +12,17 @@
 
 [https://www.npmjs.com/package/@mememory/memory-agent](https://www.npmjs.com/package/@mememory/memory-agent)
 
-模型下载：[https://github.com/mememory/memory-agent/releases](https://github.com/mememory/memory-agent/releases)
+模型下载：[https://github.com/yammigo/mememory/releases](https://github.com/yammigo/mememory/releases)
 
+### 快速开始
+```bash
+# 1. 安装本地模型
+npx @mememory/memory-agent model:import
+# 2. 启动助手
+npx @mememory/memory-agent
+```
+
+### 全局安装与使用
 ```bash
 #1.全局安装 
 npm install -g @mememory/memory-agent
