@@ -16,6 +16,8 @@ npm 包：[https://www.npmjs.com/package/@mememory/memory-agent](https://www.npm
 
 模型下载：[https://github.com/yammigo/mememory/releases](https://github.com/yammigo/mememory/releases)
 
+### 需要 Node.js ≥ 18
+
 ### 快速开始
 ```bash
 # 1. 安装本地模型
